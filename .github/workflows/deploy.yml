@@ -1,0 +1,38 @@
+name: Deploy Flutter App to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main # Trigger deployment when code is pushed to the main branch
+
+jobs:
+  build_and_deploy:
+    # Use Ubuntu for the build environment
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: ⬇️ Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: 🐦 Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          channel: 'stable' # Ensure we use the stable channel
+
+      - name: 📦 Install Dependencies
+        run: flutter pub get
+
+      # CRITICAL STEP: Build the web app with the correct base path
+      # The base path matches your repository name
+      - name: 🔨 Build Flutter Web (Release)
+        run: flutter build web --release --base-href="/magdelina-flutter-portfolio/"
+
+      # Final step: Deploy the contents of the build/web folder to the gh-pages branch
+      - name: 🚀 Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          # The source directory for deployment
+          publish_dir: ./build/web
+          # The branch where the compiled site lives
+          publish_branch: gh-pages
