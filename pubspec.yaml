@@ -1,0 +1,38 @@
+# pubspec.yaml
+
+name: interactive_resume_portfolio
+description: "A new Flutter project."
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.9.2 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  
+  cupertino_icons: ^1.0.8
+  
+  # Core Functionality and Design Dependencies
+  url_launcher: ^6.2.2          # For opening links (LinkedIn, Email)
+  responsive_framework: ^1.1.1 # Updated to a recent version to use correct syntax
+  visibility_detector: ^0.4.0  # For scroll-based animations
+  photo_view: ^0.14.0          # For fullscreen image viewing of certs/activities
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  
+  flutter_lints: ^5.0.0
+
+flutter:
+  uses-material-design: true
+
+  # Asset declaration for images used in the new sections (Profile, Certs, Activities)
+  assets:
+    - assets/images/
+    - assets/certs/
+    - assets/activities/
+    - assets/projects/
