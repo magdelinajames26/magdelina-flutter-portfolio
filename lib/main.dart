@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'data_model.dart';
-// Note: These imports assume you have placed the files in lib/widgets/
 import 'widgets/glass_card.dart';
 import 'widgets/animated_section.dart';
 import 'widgets/image_gallery.dart';
